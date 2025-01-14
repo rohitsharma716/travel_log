@@ -17,6 +17,8 @@ app.use(morgan('common'));
 app.use(helmet());
 app.use(cors({
     origin: process.env.CORS_ORIGIN,
+    optionsSuccessStatus: 200, // For legacy browser support
+
 }));
 app.use(express.json());
 
@@ -31,7 +33,7 @@ app.use('/api/logs' , logs);
 app.use(middleware.notfound)
 // general middleware
 app.use(middleware.errorHandler)
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 5001;
 
 app.listen(port , ( )=>{
      console.log(`Listening at port no : ${port}`)

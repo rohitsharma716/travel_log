@@ -1,0 +1,105 @@
+.map-marker {
+  position: relative;
+}
+
+.marker-dot {
+  width: 15px;
+  height: 15px;
+  background-color: red;
+  border-radius: 50%;
+  border: 2px solid white;
+  cursor: pointer;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+}
+
+/* New style for permanent title display */
+.marker-title {
+  position: absolute;
+  white-space: nowrap;
+  background: rgba(0, 0, 0, 0.8);
+  color: #ff4444;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+  transform: translate(-50%, -130%);
+  left: 50%;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.marker-tooltip {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  pointer-events: none;
+  transform: translate(-50%, -200%); /* Moved up to appear above title */
+  display: none;
+  min-width: 150px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.marker-tooltip .coordinates {
+  font-size: 11px;
+  color: #cccccc;
+}
+
+.map-marker:hover .marker-tooltip {
+  display: block;
+}
+
+/* Arrow for permanent title */
+.marker-title:after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid rgba(0, 0, 0, 0.8);
+}
+
+/* Arrow for tooltip */
+.marker-tooltip:after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid rgba(0, 0, 0, 0.8);
+}
+
+/* Add these styles to your existing Marker.css */
+.nav-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 999;
+}
+
+.list-link {
+  background: white;
+  color: #4CAF50;
+  padding: 10px 20px;
+  border-radius: 4px;
+  text-decoration: none;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.list-link:hover {
+  background: #4CAF50;
+  color: white;
+} 
