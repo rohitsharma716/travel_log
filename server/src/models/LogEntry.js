@@ -29,8 +29,16 @@ max :90},
         required : true,
         type: Date,
     },
-    },{
-        timestamps: true,
+    isPublic: {
+        type: Boolean,
+        default: true
+    },
+    createdBy: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    }
+}, {
+    timestamps: true,
 });
 
 const LogEntry  =  mongoose.model('LogEntry' ,  logEntrySchema);

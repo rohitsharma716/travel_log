@@ -6,6 +6,7 @@ const middleware =  require('./middlewares');
 const { mongoose } = require('mongoose');
 require('dotenv').config();
 const logs = require('./routes/logs');
+const auth = require('./routes/auth');
 
 const app = express();
 
@@ -27,6 +28,7 @@ app.get('/' , (req,res)=>{
         message: 'hello from rohit',
     })
 })
+app.use('/api/auth', auth);
 app.use('/api/logs' , logs);
 
 //node found middleware 

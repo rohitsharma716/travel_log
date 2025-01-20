@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { getPlaces } from '../API';
+import { getPlaces, updatePlaceStatus } from '../API';
 import './PlacesList.css';
 
-const PlacesList = () => {
+const PlacesList = ({ userId }) => {
   const [places, setPlaces] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
 
@@ -21,6 +21,17 @@ const PlacesList = () => {
 
     fetchPlaces();
   }, []);
+
+  const handleStatusUpdate = async (placeId, status) => {
+    try {
+      await updatePlaceStatus(userId, placeId, status);
+      // Refresh places after update
+      const data = await getPlaces();
+      setPlaces(data);
+    } catch (error) {
+      console.error("Error updating place status:", error);
+    }
+  };
 
   if (loading) {
     return <div className="loading">Loading places...</div>;
@@ -60,6 +71,20 @@ const PlacesList = () => {
               {place.comments && (
                 <p className="comments">{place.comments}</p>
               )}
+            </div>
+            <div className="place-actions">
+              <button 
+                onClick={() => handleStatusUpdate(place._id, 'visited')}
+                className="status-button visited"
+              >
+                Mark as Visited
+              </button>
+              <button 
+                onClick={() => handleStatusUpdate(place._id, 'bucket')}
+                className="status-button bucket"
+              >
+                Add to Bucket List
+              </button>
             </div>
           </div>
         ))}
